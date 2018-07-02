@@ -2,17 +2,12 @@ var express = require('express')
 var app = express()
 var tokenVerify = require('./tokenVerify')
 
-var error = (err, req, res) => {
-    res.json({
-        success: false,
-        msg: "Error"
-    })
-}
+
 var addPerson = require('./addPerson')
-app.post('/addPerson', tokenVerify, addPerson, error)
+app.post('/addPerson', tokenVerify, addPerson)
 
 var findPerson = require('./allPersons')
-app.get('/allPersons', tokenVerify, findPerson, error)
+app.get('/allPersons', tokenVerify, findPerson)
 
 var updatePerson = require('./updatePerson')
 app.post('/updatePerson', tokenVerify, updatePerson)
@@ -22,5 +17,7 @@ app.post('/register', register)
 
 var login = require('./login')
 app.post('/login', login)
+
+
 
 module.exports = app
