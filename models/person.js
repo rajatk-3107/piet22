@@ -24,7 +24,8 @@ var person = new Schema({
         country: String
     },
     active: Boolean,
-    createdOn: Date
+    createdOn: Date,
+    createdBy: String
 })
 
 module.exports = mongoose.model('person', person)
