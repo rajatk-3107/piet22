@@ -1,13 +1,13 @@
 var jwt = require('jsonwebtoken')
 
 module.exports = (req, res, next) => {
-    if (!req.headers.token) {
+    if (!req.headers['x-access-token']) {
         res.json({
             success: false,
             msg: "Authentication failure"
         })
     } else {
-        jwt.verify(req.headers.token, 'secret', (err, decoded) => {
+        jwt.verify(req.headers['x-access-token'], 'secret', (err, decoded) => {
             if (err) {
                 res.json({
                     success: false,
@@ -15,7 +15,7 @@ module.exports = (req, res, next) => {
                 })
             } else {
                 req.decoded = decoded;
-                next(decoded);
+                next();
             }
         })
     }

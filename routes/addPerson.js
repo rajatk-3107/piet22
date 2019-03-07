@@ -7,6 +7,7 @@ module.exports = (req, res) => {
             msg: "Please enter all details"
         })
     } else {
+        console.log("Here")
         new dbPerson({
             name: req.body.name,
             age: req.body.age,

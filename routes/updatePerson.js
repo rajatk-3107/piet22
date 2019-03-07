@@ -8,7 +8,7 @@ var updatePerson = (req, res, next) => {
         })
     } else {
         console.log(req.body.pincode)
-        dbPerson.findOneAndUpdate({ email: req.body.email, createdBy: req.decoded.email }, { $set: { age: req.body.age, 'address.pincode': req.body.pincode } }, (err, data) => {
+        dbPerson.findOneAndUpdate({ email: req.body.email, createdBy: req.decoded.email }, { $set: { name: req.body.age, age: req.body.age, 'address.pincode': req.body.pincode } }, (err, data) => {
             if (err) {
                 next(err)
             } else {
